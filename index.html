@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="card" role="region" aria-labelledby="title">
+      <button class="back" aria-label="Go back" title="Back" type="button">&#8592;</button>
+      <h1 id="title" class="title">BMI Calculator</h1>
+
+      <form id="bmi-form" novalidate>
+        <div class="field-group">
+          <label for="height" class="label">Height</label>
+          <input id="height" name="height" type="text" inputmode="text" autocomplete="off" placeholder="5' 8&quot;" class="input" aria-describedby="height-help" />
+          <p id="height-help" class="help">Enter like 5' 8", 5ft 8in, or 5 8</p>
+        </div>
+
+        <div class="field-group">
+          <label for="weight" class="label">Weight</label>
+          <input id="weight" name="weight" type="text" inputmode="decimal" autocomplete="off" placeholder="150 lbs" class="input" />
+        </div>
+
+        <button id="calculate" class="button" type="submit">Calculate</button>
+      </form>
+
+      <section class="result" aria-live="polite">
+        <div class="result-label">Your BMI</div>
+        <div id="bmi-value" class="result-value">—</div>
+        <div id="bmi-category" class="result-category"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html> 
