@@ -1,11 +1,9 @@
 function parseHeightToInches(input) {
   if (!input) return NaN;
   const s = String(input).trim().toLowerCase().replace(/[^0-9'\"]+/g, ' ').replace(/\s+/g, ' ').trim();
-  // Accept forms like: 5' 8", 5 8, 5ft 8in, 68, 68in
   let feet = 0;
   let inches = 0;
 
-  // If contains a quote mark for feet
   const feetMatch = s.match(/(\d+)\s*'/);
   const inchMatch = s.match(/(\d+)(?=\s*\"|\s*in\b)/);
 
@@ -13,7 +11,6 @@ function parseHeightToInches(input) {
   if (inchMatch) inches = Number(inchMatch[1]);
 
   if (!feetMatch && !inchMatch) {
-    // Maybe two numbers like "5 8" or a single inches value like "68"
     const parts = s.split(' ').filter(Boolean);
     if (parts.length === 2) {
       feet = Number(parts[0]);
@@ -22,10 +19,8 @@ function parseHeightToInches(input) {
       const single = Number(parts[0]);
       if (!Number.isNaN(single)) {
         if (single > 10) {
-          // assume it's inches total
           return single;
         } else {
-          // feet only
           feet = single;
         }
       }
@@ -46,7 +41,7 @@ function calculateBmi(heightInches, weightPounds) {
   if (!Number.isFinite(heightInches) || heightInches <= 0) return NaN;
   if (!Number.isFinite(weightPounds) || weightPounds <= 0) return NaN;
   const bmi = (weightPounds / (heightInches * heightInches)) * 703;
-  return Math.round(bmi * 10) / 10; // one decimal place
+  return Math.round(bmi * 10) / 10;
 }
 
 function categorizeBmi(bmi) {
@@ -69,7 +64,7 @@ function init() {
   const resultValue = document.getElementById('bmi-value');
   const resultCategory = document.getElementById('bmi-category');
 
-  // Prefill placeholders like the mock example
+  // Set default values to match the image
   heightInput.value = "5' 8\"";
   weightInput.value = '150 lbs';
 
